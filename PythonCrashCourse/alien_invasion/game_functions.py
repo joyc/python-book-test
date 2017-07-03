@@ -117,9 +117,14 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship,
             sb.prep_score()
         check_high_score(stats, sb)
     if len(aliens) == 0:
-        # 删除现有的子弹，加快游戏速度并新建外星人群
+        # 如果整群外星人都被消灭， 就提高一个等级
         bullets.empty()
         ai_settings.increase_speed()
+
+        # 提高等级
+        stats.level += 1
+        sb.prep_level()
+
         create_fleet(ai_settings, screen, ship, aliens)
 
 def get_number_aliens_x(ai_settings, alien_width):
