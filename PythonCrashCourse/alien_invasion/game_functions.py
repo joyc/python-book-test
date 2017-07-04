@@ -63,6 +63,7 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens,
         sb.prep_score()
         sb.prep_high_score()
         sb.prep_level()
+        sb.prep_ships()
 
         # 清空外星人列表和子弹列表
         aliens.empty()
@@ -179,12 +180,26 @@ def change_fleet_direction(ai_settings, aliens):
         alien.rect.y += ai_settings.fleet_drop_speed
     ai_settings.fleet_direction *= -1
 
+def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
+    """检查是否有外星人位于屏幕边缘，并更新整群外星人的位置"""
+    check_fleet_edges(ai_settings, aliens)
+    aliens.update()
 
-def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
+    # 检测外星人和飞船间的碰撞
+    if pygame.sprite.spritecollideany(ship, aliens):
+        ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets)
+
+    # 检查是否有外星人到达屏幕底端
+    check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets)
+
+def ship_hit(ai_settings, stats, sb, screen, ship, aliens, bullets):
     """响应飞船被外星人撞到"""
     if stats.ships_left > 0:
         # 将ship_left减1
         stats.ships_left -= 1
+
+        # 更新记分牌
+        sb.prep_ships()
 
         # 清空外星人列表和子弹列表
         aliens.empty()
@@ -200,27 +215,13 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
         stats.game_active = False
         pygame.mouse.set_visible(True)
 
-def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
-    """检查是否有外星人位于屏幕边缘，并更新整群外星人的位置"""
-    check_fleet_edges(ai_settings, aliens)
-    aliens.update()
-
-    # 检测外星人和飞船间的碰撞
-    if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
-
-    # 检查是否有外星人到达屏幕底端
-    check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
-
-
-
-def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
+def check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """检查是否有外星人到达了屏幕底端"""
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
             # 像飞船被撞倒一样进行处理
-            ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
+            ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets)
             break
 
 def check_high_score(stats, sb):
