@@ -7,7 +7,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
     def __init__(self, ai_settings, screen):
         """初始化飞船并设置其初始位置"""
         super(Ship, self).__init__()
@@ -30,6 +30,10 @@ class Ship():
         self.moving_right = False # 右移动标志
         self.moving_left = False  # 左移动标志
 
+    def center_ship(self):
+        """让飞船在屏幕上居中"""
+        self.center = self.screen_rect.centerx
+
     def update(self):
         """根据移动标志调整飞船的位置"""
         # 更新飞船的center值而不是rect
@@ -37,6 +41,7 @@ class Ship():
             self.center += self.ai_settings.ship_speed_factor
         if self.moving_left and self.rect.left > 0:
             self.center -= self.ai_settings.ship_speed_factor
+
         # 根据self.center更新rect对象
         self.rect.centerx = self.center
 
@@ -44,6 +49,3 @@ class Ship():
         """在指定位置绘制飞船"""
         self.screen.blit(self.image, self.rect)
 
-    def center_ship(self):
-        """让飞船在屏幕上居中"""
-        self.center = self.screen_rect.centerx
