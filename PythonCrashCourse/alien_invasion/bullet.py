@@ -22,6 +22,7 @@ class Bullet(Sprite):
 
         # 存储用小数表示的子弹位置
         self.y = float(self.rect.y)
+
         self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
 
