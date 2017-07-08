@@ -3,6 +3,7 @@
 import json
 from country_codes import get_country_code
 from pygal.maps.world import World
+from pygal.style import LightColorizedStyle as LCS, RotateStyle as RS
 
 # 将数据加载到一个列表中
 filename = 'population_data.json'
@@ -33,8 +34,11 @@ for cc, pop in cc_populations.items():
 # 统计每个分组的国家数
 print('分组信息为：', len(cc_pops_1), len(cc_pops_2), len(cc_pops_3))
 
-wm = World()
+wm_style = RS('#336699', base_style=LCS)
+wm = World(style = wm_style)
 wm.title = 'World Population in 2010, by Country'
+
+
 wm.add('0-10m', cc_pops_1)
 wm.add('10m-1bn', cc_pops_2)
 wm.add('>1bm', cc_pops_3)
