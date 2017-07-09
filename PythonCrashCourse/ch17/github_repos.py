@@ -24,7 +24,7 @@ for repo_dict in repo_dicts:
     description = repo_dict['description']
     plot_dict = {
         'value': repo_dict['stargazers_count'],
-        'label': description,Projects on GitHab
+        'label': description,
         'xlink': repo_dict['html_url']
     }
     plot_dicts.append(plot_dict)
@@ -46,4 +46,4 @@ chart = pygal.Bar(my_config, style=my_style)
 chart.title = 'Most Starred ' + language.title() + ' Projects on GitHab'
 chart.x_labels = names
 chart.add('', plot_dicts)
-chart.render_to_file('%s_repos.svg' %(language))
+chart.render_to_file('%s_repos.svg' % (language))
