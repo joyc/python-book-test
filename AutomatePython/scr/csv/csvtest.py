@@ -19,7 +19,7 @@ reader = csv.reader(csv_file)
 for row in reader:
     if reader.line_num == 1:
         continue
-    row = row.insert(0,';')
+    row.insert(0,';')
     csv_rows.append(row)
 csv_file.close()
 
