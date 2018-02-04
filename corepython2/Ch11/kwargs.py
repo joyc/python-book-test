@@ -8,4 +8,9 @@ def newfoo(arg1, arg2, *nkw, **kw):
         print "additional keyword arg '%s': %s" %(eachKW, kw[eachKW])
 
 
-newfoo('wolf', 3, 'projects', frend=90, gamble=96)
+# newfoo('wolf', 3, 'projects', frend=90, gamble=96)
+# newfoo(2, 4, *(6, 8), **{'foo': 10, 'bar': 12})
+
+aTuple = (6, 7, 8)
+aDict = {'z': 9}
+newfoo(1, 2, 3, x=4, y=5, *aTuple, **aDict)
