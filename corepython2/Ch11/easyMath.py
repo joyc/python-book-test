@@ -7,7 +7,7 @@ from operator import add, sub, mul, floordiv
 from random import randint, choice
 
 ops = {'+': add, '-': sub, 'x': mul, '/': floordiv}
-MAXTRIES = 2
+MAX_TRIES = 2
 
 
 def doprob():
@@ -15,25 +15,21 @@ def doprob():
     nums = [randint(1, 10) for i in range(2)]
     nums.sort(reverse=True)
     ans = ops[op](*nums)
-    pr = '%d %s %d = ' % (nums[0], op, nums[1])
+    pr = '%d %s %s = ' % (nums[0], op, nums[1])
     oops = 0
     while True:
         try:
             if int(raw_input(pr)) == ans:
-                print
-                'correct'
+                print 'correct'
                 break
-            if oops == MAXTRIES:
-                print
-                'answer\n%s%d' % (pr, ans)
+            if oops == MAX_TRIES:
+                print 'sorry... the answer is\n%s%d' % (pr, ans)
             else:
-                print
-                'incorrect...try again'
+                print 'incorrect...try again'
                 oops += 1
-        except (KeyboardInterrupt, \
+        except (KeyboardInterrupt,
                 EOFError, ValueError):
-            print
-            'invalid input...try again'
+            print 'invalid input...try again'
 
 
 def main():
