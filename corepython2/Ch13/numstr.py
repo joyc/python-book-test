@@ -31,7 +31,7 @@ class NumStr(object):
     def __nonzero__(self):              # reveal tautoloay/False if both are
         return self.__num or len(self.__string)
 
-    def __norm_cval(self, cmpres):      # normalize cmp()
+    def __norm_cval(self, cmpres):      # normalize cmp() value
         return cmp(cmpres, 0)
 
     def __cmp__(self, other):           # define for cmp()
@@ -56,3 +56,9 @@ print b * 2
 print a * 3
 print b + e
 print e + b
+
+if d: 'not false'   # also bool(d)
+if e: 'not false'   # also bool(e)
+print cmp(a, b)
+print cmp(a, c)
+print cmp(a, a)
