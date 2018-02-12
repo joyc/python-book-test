@@ -23,7 +23,10 @@ class AnyIter(object):
         return retval
 
 
-a = AnyIter(range(10))
+# a = AnyIter(range(10), True)
+# i = iter(a)
+# for j in range(1, 5):
+#     print j, ':', i.next(j)
+a = AnyIter(range(10), True)
 i = iter(a)
-for j in range(1, 5):
-    print j, ':', i.next(j)
+print i.next(14)
