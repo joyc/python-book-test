@@ -39,3 +39,20 @@ class NumStr(object):
                 cmp(self.__num, other.__num)) + \
             self.__norm_cval(
                 cmp(self.__string, other.__string))
+
+
+a = NumStr(3, 'foo')
+b = NumStr(3, 'goo')
+c = NumStr(2, 'foo')
+d = NumStr()
+e = NumStr(string='boo')
+f = NumStr(1)
+
+print a, b, c, d, e, f
+print a < b
+print b < c
+print a == a
+print b * 2
+print a * 3
+print b + e
+print e + b
