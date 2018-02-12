@@ -21,3 +21,9 @@ class AnyIter(object):
                 else:
                     raise
         return retval
+
+
+a = AnyIter(range(10))
+i = iter(a)
+for j in range(1, 5):
+    print j, ':', i.next(j)
