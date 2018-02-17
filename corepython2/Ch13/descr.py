@@ -25,7 +25,7 @@ class FileDescr(object):
                 EOFError, AttributeError,
                 ImportError, IndexError), e:
             raise AttributeError, \
-                "could not read %r: %s" %  self.name
+                "could not read %r: %s" % self.name
 
     def __set__(self, obj, val):
         try:
