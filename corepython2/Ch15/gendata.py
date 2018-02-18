@@ -22,5 +22,5 @@ for i in range(randint(5, 10)):
     for j in range(longer):                 # create domain
         dn += choice(lowercase)
 
-    print '%s::%s.%s::%d-%d-%d' %(dtstr, em, dn, choice(doms),
-        dtint, shorter, longer)
+    print '%s::%s.%s::%d-%d-%d' % (dtstr, em, dn,
+                                   choice(doms), dtint, shorter, longer)
