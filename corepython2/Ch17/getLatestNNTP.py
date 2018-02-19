@@ -16,7 +16,7 @@ def main():
 
     try:
         n = nntplib.NNTP(HOST)
-        #user=USER, password=PASS)
+        #, user=USER, password=PASS,
     except socket.gaierror, e:
         print 'ERROR: cannot reach host "%s"' % HOST
         print ' ("%s")' % eval(str(e))[1]
@@ -68,12 +68,12 @@ def displayFirst20(data):
         if line:
             lower = line.lower()
             if (lower.startswith('>') and not \
-                    lower.startswith('>>>')) or \
+                lower.startswith('>>>')) or \
                 lower.startswith('|') or \
                 lower.startswith('in article') or \
                 lower.endswith('writes:') or \
                 lower.endswith('wrote:'):
-                continue
+                    continue
         if not lastBlank or (lastBlank and line):
             print '    %s' % line
             if line:
