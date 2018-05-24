@@ -3,8 +3,7 @@
 from flask import Flask, request, render_template
 from spiderData import search_info
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
 
 app = Flask(__name__)
 
