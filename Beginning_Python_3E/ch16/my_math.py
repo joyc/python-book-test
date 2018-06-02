@@ -19,5 +19,4 @@ def product(x, y):
     :return:
     15
     '''
-    pass
-    #return x * y
+    return x * y
