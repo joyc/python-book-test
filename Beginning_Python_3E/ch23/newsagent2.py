@@ -12,10 +12,10 @@ class NewsAgent:
         self.sources = []
         self.destinations = []
 
-    def addSource(self, source):
+    def add_source(self, source):
         self.sources.append(source)
 
-    def addDestination(self, dest):
+    def add_destination(self, dest):
         self.destinations.append(dest)
 
     def distribute(self):
@@ -24,9 +24,9 @@ class NewsAgent:
         """
         items = []
         for source in self.sources:
-            items.extend(source.getItems())
+            items.extend(source.get_items())
         for dest in self.destinations:
-            dest.receiveItems(items)
+            dest.receive_items(items)
 
 
 class NewsItem:
@@ -47,7 +47,7 @@ class NNTPSource:
         self.group = group
         self.howmany = howmany
 
-    def getItems(self):
+    def get_items(self):
         server = NNTP(self.servername)
         resp, count, first, last, name = server.group(self.group)
         start = last - self.howmany + 1
@@ -71,19 +71,19 @@ class SimpleWebSource:
         self.body_pattern = re.compile(body_pattern)
         self.encoding = encoding
 
-    def getItems(self):
+    def get_items(self):
         text = urlopen(self.url).read().decode(self.encoding)
         titles = self.title_pattern.findall(text)
         bodies = self.body_pattern.findall(text)
         for title, body in zip(titles, bodies):
-            yield NewsItem(title, textwrao.fill(body) + '\n')
+            yield NewsItem(title, textwrap.fill(body) + '\n')
 
 
 class PlainDestination:
     """
     以纯文本方式显示所有新闻的新闻目的地
     """
-    def receiveItems(self, items):
+    def receive_items(self, items):
         for item in items:
             print(item.title)
             print('-' * len(item.title))
@@ -97,7 +97,7 @@ class HTMLDestination:
     def __init__(self, filename):
         self.filename = filename
 
-    def receiveItems(self, items):
+    def receive_items(self, items):
         out = open(self.filename, 'w')
         print("""
         <html>
@@ -129,7 +129,8 @@ class HTMLDestination:
         </html>
         """, file=out)
 
-def runDefaultSetup():
+
+def run_defaultsetup():
     """
     默认的新闻源和目的地设置，请根据偏好进行修改
     """
@@ -153,12 +154,12 @@ def runDefaultSetup():
     agent.add_source(clpa)
 
     # 添加纯文本目的地和HTML目的地：
-    agent.addDestination(PlainDestination())
-    agent.addDestination(HTMLDestination('news.html'))
+    agent.add_destination(PlainDestination())
+    agent.add_destination(HTMLDestination('news.html'))
 
     # 分发新闻：
     agent.distribute()
 
 
 if __name__ == '__main__':
-    runDefaultSetup()
+    run_defaultsetup()
