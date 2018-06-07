@@ -1,0 +1,6 @@
+# alaya
+/alaya/customer/mhlw_kourou/content/
+/alaya/customer/mhlw_kourou/*.properties
+# tomcat
+/tomcat/webapp/ROOT/common/
+/tomcat/webapp/ROOT/*.*
