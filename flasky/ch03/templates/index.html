@@ -1,1 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block page_content %}
 <h2>Hello jinjia2!</h2>
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+<p>时间语言为：{{ moment.lang("es") }}</p>
+{% endblock %}
