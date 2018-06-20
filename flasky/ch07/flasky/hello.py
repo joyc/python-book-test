@@ -1,4 +1,5 @@
 import os
+from threading import Thread
 from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_script import Manager, Shell
 from flask_bootstrap import Bootstrap
@@ -8,6 +9,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
+from flask_mail import Mail, Message
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -17,12 +19,26 @@ app.config['SECRET_KEY'] = 'hard to guess string'
 app.config['SQLALCHEMY_DATABASE_URI'] =\
     'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# flask-mail set system variables Gmail need set security on
+# export MAIL_USERNAME=xxx@gmail.com
+# export MAIL_PASSWORD=xxx
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['FLASKY_MAIL_SUBJECT_PREFIX'] = '[Flasky]'
+app.config['FLASKY_MAIL_SENDER'] = 'Flasky Admin <flasky@example.com>'
+app.config['FLASKY_ADMIN'] = os.environ.get('FLASKY_ADMIN')
+
 
 manager = Manager(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+mail = Mail(app)
 
 
 class Role(db.Model):
@@ -58,6 +74,21 @@ manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand) # add migrate command
 
 
+def send_async_email(app, msg):
+    with app.app_context():
+        mail.send(msg)
+
+
+def send_email(to, subject, template, **kwargs):
+    msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + subject,
+                  sender=app.config['FLASKY_MAIL_SENDER'], recipients=[to])
+    msg.body = render_template(template + '.txt', **kwargs)
+    msg.html = render_template(template + '.html', **kwargs)
+    thr = Thread(target=send_async_email, args=[app, msg])
+    thr.start()
+    return thr
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -74,17 +105,20 @@ def index():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.name.data).first()
         if user is None:
-            user = User(username = form.name.data)
+            user = User(username=form.name.data)
             db.session.add(user)
             session['known'] = False
+            if app.config['FLASKY_ADMIN']:
+                # send mail to admin for notification need set admin mail to system first
+                send_email(app.config['FLASKY_ADMIN'], 'New User',
+                           'mail/new_user', user=user)
         else:
             session['known'] = True
         session['name'] = form.name.data
         form.name.data = ''
         return redirect(url_for('index'))
-    return render_template('index.html', 
-        form=form, name=session.get('name'), 
-        known = session.get('known', False))
+    return render_template('index.html', form=form, name=session.get('name'),
+                           known=session.get('known', False))
 
 
 if __name__ == '__main__':
