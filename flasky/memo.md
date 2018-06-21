@@ -297,3 +297,12 @@ Script 的 manager 对象上。在这个例子中， MigrateCommand 类使用 db
 python hello.py db init
 ```
 
+
+
+#### Flask-Login要求实现的用户方法
+|方　　法 |说　　明|
+|is_authenticated() |如果用户已经登录，必须返回 True ，否则返回False|
+|is_active() | 如果允许用户登录，必须返回 True ，否则返回 False。如果要禁用账户，可以返回 False|
+|is_anonymous() |对普通用户必须返回 False|
+|get_id() |必须返回用户的唯一标识符，使用 Unicode 编码字符串|
+
