@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from datetime import datetime
 from flask import render_template, session, redirect, url_for
 
@@ -26,3 +27,6 @@ def index():
     return render_template('index.html',
         form=form, name=session.get('name'),
         known=session.get('known', False))
+=======
+pass
+>>>>>>> ef430b6090c81ca76a224436ec7407d340e1538d

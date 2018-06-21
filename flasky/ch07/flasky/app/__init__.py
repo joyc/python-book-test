@@ -5,7 +5,10 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from config import config
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef430b6090c81ca76a224436ec7407d340e1538d
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
@@ -22,8 +25,15 @@ def create_app(config_name):
     moment.init_app(app)
     db.init_app(app)
 
+<<<<<<< HEAD
     # 引入并注册蓝图附加路由和自定义的错误页面
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     return app
+=======
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    return app
+>>>>>>> ef430b6090c81ca76a224436ec7407d340e1538d

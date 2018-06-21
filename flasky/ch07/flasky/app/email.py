@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from threading import Thread
 from flask import current_app, render_template
 from flask_mail import Message
@@ -18,3 +19,6 @@ def send_email(to, subject, template, **kwargs):
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
     return thr
+=======
+pass
+>>>>>>> ef430b6090c81ca76a224436ec7407d340e1538d

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import render_template
 from . import main
 
@@ -10,3 +11,6 @@ def page_not_found(e):
 @main.app_errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+=======
+pass
+>>>>>>> ef430b6090c81ca76a224436ec7407d340e1538d
