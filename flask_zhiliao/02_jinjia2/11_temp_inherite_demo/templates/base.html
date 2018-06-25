@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body{
+            background: lightpink;
+        }
+        .nav ul{
+            overflow: hidden;
+        }
+        .nav ul li{
+            float: left;
+            margin: 0 20px
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li>首 页</li>
+            <li>课程详情</li>
+            <li>视频教程</li>
+            <li>关于我们</li>
+        </ul>
+    </nav>
+
+    {% block body_block %}
+        <p style="background: #5b80b2">我是base模板中的代码</p>
+        <img src="{{ url_for('static', filename='imgs/images.jpg') }}">
+    {% endblock %}
+
+    <footer>
+        <p>这是底部内容</p>
+        <p><a>copyright (c) 2018</a></p>
+    </footer>
+</body>
+</html>

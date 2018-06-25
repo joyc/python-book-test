@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}
+    网站的首页
+{% endblock %}
+{% block body_block %}
+    {{ super() }}
+    <p style="background: #fffccf">我是index模板中的代码</p>
+    {{ self.title() }}
+{% endblock %}

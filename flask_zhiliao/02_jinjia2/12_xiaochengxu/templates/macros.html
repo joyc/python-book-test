@@ -1,0 +1,37 @@
+{# macro for itemGroup #}
+{% macro itemGroup(thumbnail,title,ranking) %}
+    <div class="item-group">
+        <img src="{{ thumbnail }}" alt="" class="thumbnail">
+        <p class="item-title">{{ title }}</p>
+        <p class="item-ranking">
+            {% set lights = ((ranking|int)/2)|int %}
+            {% set halfs = (ranking|int)%2 %}
+            {% set grays = 5 - lights - halfs %}
+            {% for light in range(0, lights) %}
+                <img src="{{ url_for("static", filename='images/rate_light.png') }}" alt="">
+            {% endfor %}
+            {% for half in range(0, halfs) %}
+                <img src="{{ url_for("static", filename='images/rate_half.jpg') }}" alt="">
+            {% endfor %}
+            {% for gray in range(0, grays) %}
+                <img src="{{ url_for("static", filename='images/rate_gray.png') }}" alt="">
+            {% endfor %}
+            {{ ranking }}
+        </p>
+    </div>
+{% endmacro %}
+
+{# macro for listGroup #}
+{% macro listGroup(module_title, items, category=category) %}
+    <div class="item-list-group">
+        <div class="item-list-top">
+            <span class="module-title">{{ module_title }}</span>
+            <a href="{{ url_for('item_list', category=category) }}" class="more-btn">更多</a>
+        </div>
+        <div class="list-group">
+            {% for item in items[0:3] %}
+                {{ itemGroup(item.thumbnail, item.title, item.rating) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
