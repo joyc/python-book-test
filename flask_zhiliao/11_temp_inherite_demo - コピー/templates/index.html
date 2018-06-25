@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jinjia2 - Macro测试</title>
+</head>
+<body>
+    {% macro input(name='', value='', type='text') %}
+        <input type="{{ type }}" name="{{ name }}, value="{{ value }}">
+    {% endmacro %}
+
+    <h1>用户登录</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>用户名： </td>
+                <td>{{ input("username") }}</td>
+            </tr>
+            <tr>
+                <td>密码： </td>
+                <td>{{ input("password", type="password") }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ input(value="提交", type="submit") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

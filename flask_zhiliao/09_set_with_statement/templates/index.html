@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jinjia2 - set_with测试</title>
+</head>
+<body>
+    {% set username='菊外人' %}
+    <p>用户名： {{ username }}</p>
+    <!-- with定义的仅限于with块中使用 -->
+<!--     {% with classroom='101班' %}
+        <p>班级： {{ classroom }}</p>
+    {% endwith %} -->
+    {% with %}
+        {% set classroom='C100班' %}
+        <p>with班级： {{ classroom }}</p>
+    {% endwith %}
+    <p>with外部班级： {{ classroom }}</p>
+</body>
+</html>

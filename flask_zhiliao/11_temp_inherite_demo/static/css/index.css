@@ -1,0 +1,7 @@
+.nav ul{
+    overflow: hidden;
+    }
+.nav ul li{
+    float: left;
+    margin: 0 20px
+    }

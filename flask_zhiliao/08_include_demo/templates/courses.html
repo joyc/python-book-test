@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>include - CoursesPage</title>
+</head>
+<body>
+    {% include "common/header.html" %}
+    <div class="content">
+        <p>course 中间内容</p>
+        <p>{{ course_name }}</p>
+    </div>
+    {% include "common/footer.html" %}
+</body>
+</html>

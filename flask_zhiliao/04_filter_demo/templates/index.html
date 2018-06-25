@@ -7,5 +7,32 @@
 <body>
     模板内容
     <p>位置的绝对值为：{{ position|abs }}</p>
+    <p>个性签名： {{ signature|default('此人很懒，啥也不写。', boolean=True) }}</p>
+    <!-- 一般开发中使用or -->
+    <p>个性签名2： {{ signature or '此人很懒，啥也不写。' }}</p>
+    <p>JS测试：{{ javascript }}</p>
+    <!-- 对autoescape off 块中的某一个字符串进行转义 -->
+    {% autoescape off %}
+    <p>escape测试：{{ escape_content|escape }}</p>
+    {% endautoescape %}
+    <!-- safe用来关闭某个转义 -->
+{#    <p>safe测试：{{ safe_content|safe }}</p>    #}
+    <!-- 等同于person[0] -->
+    <p>first过滤：{{ person|first }}, {{person[0]}}</p>
+    <p>format过滤： 老二的名字叫： {{"%s"|format(person[1])}}</p>
+    <p>lengh测试： 人数为： {{ person|length}}</p>
+    {% if age < 18 %}
+        <p>未满18岁，还能挥霍！</p>
+    {% else %}
+        <p>已经18岁，已经成人！</p>
+    {% endif %}
+    <p>replace测试： {{ article|replace('hello', 'aaa')}}</p>
+    <p>truncate测试： {{ article|truncate(length=5)}}</p>
+    <p>replace测试： {{ article|replace('hello', 'aaa')}}</p>
+    <!-- 删除字符串中所有HTML标签，如多个空格，将替换成一个。 -->
+    <p>striptags测试: {{ javascript|striptags }}</p>
+    <p>wordcount测试： Article文中单词总数是： {{ article|wordcount }}</p>
+    <p>自定义过滤器my_cut： 删除所有hello： {{ article|my_cut }}</p>
+    <p>自定义时间过滤器： 文章发表时间为：{{ create_time|handle_time }}</p>
 </body>
 </html>

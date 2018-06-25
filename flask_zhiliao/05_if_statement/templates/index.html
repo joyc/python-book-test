@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网站首页标题</title>
+</head>
+<body>
+    {% if username == 'erdan' %}
+        个人信息：
+        <p>姓名： {{ username }}</p>
+        <p>年龄： {{ age }}</p>
+    {% else %}
+        <p>不显示查看信息</p>
+    {% endif %}
+</body>
+</html>
