@@ -43,7 +43,6 @@ class Article(Base):
     create_time = Column(Time)
 
 
-
 Base.metadata.drop_all()  # 只删除绑定的对象的表
 # 只有alembic/flask-migrate 数据迁移可以更新表结构
 Base.metadata.create_all()

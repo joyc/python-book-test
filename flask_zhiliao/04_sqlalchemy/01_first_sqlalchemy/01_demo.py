@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 
-HOSTNAME = '127.0.0.1'
+HOSTNAME = '10.211.55.4'
 PORT = '3306'
 DATABASE = 'first_sqlalchemy'
 USERNAME = 'root'
