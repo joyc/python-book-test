@@ -7,7 +7,7 @@ from datetime import datetime
 
 HOSTNAME = '10.211.55.4'
 PORT = '3306'
-DATABASE = 'first_sqlalchemy'
+DATABASE = 'flask_sqlalchemy'
 USERNAME = 'root'
 PASSWORD = 'root'
 
@@ -21,6 +21,8 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(50), nullable=False)
+    city = Column(String(10), nullable=False)
+    age = Column(Integer, default=0)
 
     def __repr__(self):
         return "<User(username:%s)>" % self.username
@@ -36,7 +38,7 @@ class Article(Base):
     author = relationship("User", backref="articles")
 
     def __repr__(self):
-        return "<Article(title:%s)>" % (self.title)
+        return f"<Article(title:{self.title})>"
 
 
 def db_init():
@@ -45,26 +47,25 @@ def db_init():
 
 
 def add_data():
-    user1 = User(username="erdan")
-    user2 = User(username="sandan")
-    for x in range(1):
-        article = Article(title='title %s' % x)
-        article.author = user1
-        session.add(article)
-    session.commit()
-
-    for x in range(1, 3):
-        article = Article(title='title %s' % x)
-        article.author = user2
-        session.add(article)
+    user1 = User(username="二蛋", city="北京", age=18)
+    user2 = User(username="三蛋", city="北京", age=19)
+    user3 = User(username="四蛋", city="保山", age=20)
+    user4 = User(username="大蛋", city="邢台", age=22)
+    session.add_all([user1, user2, user3, user4])
     session.commit()
 
 
 def search_user():
-    # 找到所有用户按照发表的文章数量排序
-    result = session.query(User.username, func.count(Article.id)).\
-        join(Article, User.id == Article.uid).\
-        group_by(User.id).order_by(func.count(Article.id).desc()).all()
+    # 找到跟二蛋同岁且在同一城市的人
+
+    # 原始不效率的查询
+    # user = session.query(User).filter(User.username == '二蛋').first()
+    # users = session.query(User).filter(User.city == user.city, User.age == user.age).all()
+    # print(users)
+
+    # 推荐的子查询
+    subq = session.query(User.city.label("city"), User.age.label("age")).filter(User.username == "二蛋").subquery()
+    result = session.query(User).filter(User.city == subq.c.city, User.age == subq.c.age).all()
     print(result)
 
 
