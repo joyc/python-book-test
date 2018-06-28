@@ -2,6 +2,7 @@ from flask_script import Manager
 from zhiliao import app
 from exts import db
 from flask_migrate import Migrate, MigrateCommand
+# 需要把映射到数据库中的模型导入到manager.py中
 from models import User
 
 
