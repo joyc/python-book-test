@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, Text, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 
-HOSTNAME = '10.211.55.4'
+HOSTNAME = '127.0.0.1'
 PORT = '3306'
 DATABASE = 'alembic_demo'
 USERNAME = 'root'
