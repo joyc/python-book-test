@@ -3,7 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 from forms import UploadForm
-form werkzeug.datastructures import CombinedMultiDict
+from werkzeug.datastructures import CombinedMultiDict
 
 
 app = Flask(__name__)
@@ -21,15 +21,20 @@ def upload():
     if request.method == "GET":
         return render_template('upload.html')
     else:
-        form = UploadForm(request.form)
-        # 获取描述信息
-        desc = request.form.get('desc')
-        avatar = request.files.get('avatar')
-        # 用于检验文件名，保证安全性, 消除安全隐患
-        filename = secure_filename(avatar.filename)
-        avatar.save(os.path.join(UPLOAD_PATH, filename))
-        print(desc)
-        return "文件上传成功！"
+        form = UploadForm(CombinedMultiDict([request.form,
+            request.files]))
+        if form.validate():
+            # 获取描述信息
+            desc = request.form.get('desc')
+            avatar = request.files.get('avatar')
+            # 用于检验文件名，保证安全性, 消除安全隐患
+            filename = secure_filename(avatar.filename)
+            avatar.save(os.path.join(UPLOAD_PATH, filename))
+            print(desc)
+            return "文件上传成功！"
+        else:
+            print(form.errors)
+            return "Upload Fail!"
 
 
 # 上传的图片能显示需要实现此方法
