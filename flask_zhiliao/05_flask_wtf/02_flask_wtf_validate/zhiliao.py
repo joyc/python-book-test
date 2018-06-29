@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from forms import RegistForm, LoginForm
+from forms import RegistForm, LoginForm, SettingsForm
 from uuid import uuid4
 print(uuid4())
 
@@ -33,7 +33,18 @@ def login():
         if form.validate():
             return "success"
         else:
+            print(form.errors)
             return "fail"
+
+
+@app.route('/settings/', methods=['GET', 'POST'])
+def settings():
+    if request.method == 'GET':
+        form = SettingsForm()
+        return render_template('settings.html', form=form)
+    else:
+        form = SettingsForm(request.form)
+        pass
 
 
 if __name__ == '__main__':
