@@ -1,4 +1,4 @@
-from flask import Flask, request, g
+from flask import Flask, request, g, template_rendered, render_template
 from blinker import Namespace
 from signals import login_signal
 
@@ -25,6 +25,18 @@ from signals import login_signal
 app = Flask(__name__)
 
 
+# def template_rendered_func(sender, template, context):
+#     print('sender:', sender)
+#     print('template:', template)
+#     print('context:', context)
+# template_rendered.connect(template_rendered_func)
+
+def request_exception_log(sender, exception):
+    print(sender)
+    print(exception)
+got_request_exception.connect(request_exception_log)
+
+
 @app.route('/login/')
 def login():
     # 通过查询字符串的形式来传递username这个参数
@@ -37,9 +49,9 @@ def login():
         return '请输入用户名'
 
 
-@app.route('/hello_world')
+@app.route('/')
 def hello_world():
-    return 'hello world!'
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
