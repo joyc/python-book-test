@@ -1,2 +1,2 @@
 # python-book-test
-learn python from books
+learn python from books and videos
