@@ -4,11 +4,11 @@ DEBUG = True
 
 DB_USERNAME = 'root'
 DB_PASSWORD = 'root'
-DB_HOST = '127.0.0.1'
+DB_HOST = '10.211.55.4'
 DB_PORT = '3306'
 DB_NAME = 'zlbbs'
 
-DB_URI = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8"
+DB_URI = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8"
 
 SQLALCHEMY_DATABASE_URI = DB_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
