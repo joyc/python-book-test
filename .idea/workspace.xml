@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9204401a-e403-4e81-95aa-2f2d7d9b5623" name="Default" comment="add redis demo" />
+    <list default="true" id="9204401a-e403-4e81-95aa-2f2d7d9b5623" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/zlbbs.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/zlbbs.py" afterDir="false" />
+    </list>
     <ignored path=".idea/misc.xml" />
     <ignored path=".idea/modules.xml" />
     <ignored path=".idea/python-book-test.iml" />
@@ -135,7 +143,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="958" />
     <option name="y" value="23" />
     <option name="width" value="962" />
@@ -157,6 +165,11 @@
             <path>
               <item name="python-book-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="python-book-test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python-book-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python-book-test" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_zhiliao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -189,27 +202,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517043404390</updated>
-    </task>
-    <task id="LOCAL-00020" summary="add files">
-      <created>1518944333332</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1518944333332</updated>
-    </task>
-    <task id="LOCAL-00021" summary="add files">
-      <created>1518964458579</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1518964458579</updated>
-    </task>
-    <task id="LOCAL-00022" summary="add files">
-      <created>1518965939845</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1518965939845</updated>
     </task>
     <task id="LOCAL-00023" summary="add files">
       <created>1518967516505</created>
@@ -533,20 +525,42 @@
       <option name="project" value="LOCAL" />
       <updated>1530714795743</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add redis demo">
+      <created>1530714967822</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1530714967822</updated>
+    </task>
+    <task id="LOCAL-00070" summary="init zlbbs blueprint">
+      <created>1530716265384</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1530716265384</updated>
+    </task>
+    <task id="LOCAL-00071" summary="init zlbbs common config files">
+      <created>1530717224094</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1530717224094</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="958" y="23" width="962" height="999" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50652176" side_tool="true" weight="0.26718405" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.49347827" visible="true" weight="0.26718405" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49347827" weight="0.26718405" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49597585" weight="0.32852387" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49353233" weight="0.25277162" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49245283" weight="0.28824833" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49703264" visible="true" weight="0.22934783" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49245283" visible="true" weight="0.28824833" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49703264" visible="true" weight="0.22934783" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.18208955" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -571,8 +585,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add ch22 xml" />
-    <MESSAGE value="add ch23 NNTP" />
     <MESSAGE value="add shellmaker" />
     <MESSAGE value="add flasky ch04" />
     <MESSAGE value="add flasky ch07" />
@@ -596,7 +608,9 @@
     <MESSAGE value="add memcached demo" />
     <MESSAGE value="init zlbbs project" />
     <MESSAGE value="add redis demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="add redis demo" />
+    <MESSAGE value="init zlbbs blueprint" />
+    <MESSAGE value="init zlbbs common config files" />
+    <option name="LAST_COMMIT_MESSAGE" value="init zlbbs common config files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/flask_zhiliao/04_sqlalchemy/01_first_sqlalchemy/05_column_demo.py">
@@ -765,13 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_zhiliao/04_sqlalchemy/05_flask_migrate_demo/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_zhiliao/08_csrf_demo/ICBC/exts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -928,6 +935,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_zhiliao/04_sqlalchemy/05_flask_migrate_demo/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" lean-forward="true" selection-start-column="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
