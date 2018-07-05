@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9204401a-e403-4e81-95aa-2f2d7d9b5623" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/12_redis/publish_mail.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/decorators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/versions/c2d848066278_.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/static/cms/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/static/cms/css/signin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/static/cms/js/base.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/templates/cms/cms_index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/templates/cms/cms_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/11_memcached/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/11_memcached/demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/12_redis/redis_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/12_redis/redis_demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/apps/cms/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/README" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/script.py.mako" beforeDir="false" afterPath="$PROJECT_DIR$/flask_zhiliao/zlbbs/migrations/script.py.mako" afterDir="false" />
-    </list>
+    <list default="true" id="9204401a-e403-4e81-95aa-2f2d7d9b5623" name="Default" comment="" />
     <ignored path=".idea/misc.xml" />
     <ignored path=".idea/modules.xml" />
     <ignored path=".idea/python-book-test.iml" />
@@ -117,7 +100,13 @@
     <favorites_list name="python-book-test" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -167,7 +156,6 @@
     </navigator>
     <panes>
       <pane id="NBKnowledgePane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,10 +174,18 @@
               <item name="flask_zhiliao" type="462c0819:PsiDirectoryNode" />
               <item name="zlbbs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="python-book-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python-book-test" type="462c0819:PsiDirectoryNode" />
+              <item name="flask_zhiliao" type="462c0819:PsiDirectoryNode" />
+              <item name="zlbbs" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -568,13 +564,13 @@
     <frame x="958" y="23" width="962" height="999" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50652176" side_tool="true" weight="0.26718405" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5076087" side_tool="true" weight="0.28824833" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49347827" weight="0.26718405" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49597585" weight="0.32852387" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49353233" weight="0.25277162" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49245283" visible="true" weight="0.28824833" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49703264" visible="true" weight="0.22934783" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49239132" visible="true" weight="0.28824833" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49703264" visible="true" weight="0.23369566" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.18208955" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -627,13 +623,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="init zlbbs db cms_user models" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flask_zhiliao/04_sqlalchemy/01_first_sqlalchemy/05_column_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="37" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_zhiliao/04_sqlalchemy/01_first_sqlalchemy/03_demo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -958,6 +947,9 @@
           <caret column="21" lean-forward="true" selection-start-column="12" selection-end-column="21" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_zhiliao/zlbbs/config.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
