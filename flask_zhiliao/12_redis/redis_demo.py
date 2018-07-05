@@ -43,4 +43,7 @@ while True:
             data = item['data']
             print(data)
             # 发送邮件
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6214d731a0476131476c4c721d0e6bd0f969e424
