@@ -184,10 +184,17 @@ body {
 }
 
 
-
 .top-group{
     padding: 5px 10px;
     border-radius: 2px;
     background: #ecedf0;
     overflow: hidden;
+}
+
+/*
+ * cms reset pwd/email
+ */
+
+.form-container{
+    width: 300px;
 }

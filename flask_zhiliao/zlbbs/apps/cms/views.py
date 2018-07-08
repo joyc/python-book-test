@@ -10,12 +10,15 @@ from flask import (
     g,
     jsonify
     )
-from .forms import LoginForm, ResetpwdForm
+from .forms import LoginForm, ResetpwdForm, ResetEmailForm
 from .models import CMSUser
 from .decorators import login_required
 import config
-from exts import db
-from utils import restful
+from exts import db, mail
+from flask_mail import Message
+from utils import restful, zlcache
+import string
+import random
 
 
 bp = Blueprint("cms", __name__, url_prefix="/cms")
@@ -39,6 +42,34 @@ def logout():
 @login_required
 def profile():
     return render_template("cms/cms_profile.html")
+
+
+@bp.route('/email_captcha/')
+def email_captcha():
+    # /email_captcha/?email=xxx@xx.com
+    email = request.args.get('email')
+    if not email:
+        return restful.params_error('请传递邮箱参数')
+    # 生成验证码string中的字母加range的数字组成
+    source = list(string.ascii_letters)
+    source.extend(map(lambda x: str(x), range(0, 10)))
+    captcha = "".join(random.sample(source, 6))
+    # 给邮箱发送内容
+    message = Message('Hython论坛邮箱验证码', recipients=[email], body=f'您的验证码为：{captcha}')
+    try:
+        mail.send(message)
+    except:
+        return restful.server_error()
+    # 存入memcached中
+    zlcache.set(email, captcha)
+    return restful.success()
+
+
+@bp.route('/email/')
+def send_email():
+    message = Message('邮件发送', recipients=['admin@hython.com'], body='测试')
+    mail.send(message)
+    return 'success!'
 
 
 class LoginView(views.MethodView):
@@ -99,5 +130,23 @@ class ResetPwdView(views.MethodView):
             return restful.params_error(form.get_error())
 
 
+class ResetEmailView(views.MethodView):
+    decorators = [login_required]
+
+    def get(self):
+        return render_template('cms/cms_resetemail.html')
+
+    def post(self):
+        form = ResetEmailForm(request.form)
+        if form.validate():
+            email = form.email.data
+            g.cms_user.email = email
+            db.session.commit()
+            return restful.success()
+        else:
+            return restful.params_error(form.get_error())
+
+
 bp.add_url_rule('/login/', view_func=LoginView.as_view('login'))
 bp.add_url_rule('/resetpwd/', view_func=ResetPwdView.as_view('resetpwd'))
+bp.add_url_rule('/resetemail/', view_func=ResetEmailView.as_view('resetemail'))
