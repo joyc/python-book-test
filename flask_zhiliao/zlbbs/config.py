@@ -8,7 +8,6 @@ DEBUG = True
 DB_USERNAME = 'root'
 DB_PASSWORD = 'root'
 DB_HOST = '10.211.55.4'
-# DB_HOST = '127.0.0.1'
 DB_PORT = '3306'
 DB_NAME = 'zlbbs'
 

@@ -6,7 +6,10 @@ from zlbbs import create_app
 from exts import db
 from apps.cms import models as cms_models
 
+
 CMSUser = cms_models.CMSUser
+CMSRole = cms_models.CMSRole
+CMSPermission = cms_models.CMSPermission
 
 app = create_app()
 
