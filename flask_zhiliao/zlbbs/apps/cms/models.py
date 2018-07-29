@@ -9,23 +9,25 @@ class CMSPermission(object):
     # 255的二进制方式表示为1111 1111, 0b是二进制开头
     ALL_PERMISSION = 0b11111111
     # 1. 访问者权限
-    VISITOR = 0b00000001
+    VISITOR =        0b00000001
     # 2. 管理帖子权限
-    POSTER = 0b00000010
+    POSTER =         0b00000010
     # 3. 管理评论权限
-    COMMENTER = 0b00000100
+    COMMENTER =      0b00000100
     # 4. 管理板块权限
-    BOARDER = 0b00001000
+    BOARDER =        0b00001000
     # 5. 管理前台用户权限
-    FRONTUSER = 0b00010000
+    FRONTUSER =      0b00010000
     # 6. 管理后台用户权限
-    CMSUSER = 0b00100000
+    CMSUSER =        0b00100000
+    # 7. 开发者管理后台管理员权限
+    ADMINER =        0b01000000
 
 
 cms_role_user = db.Table(
     'cms_role_user',
-    db.Column('cms_role_id', db.Integer, db.ForeignKey('cms_role_id'), primary_key=True),
-    db.Column('cms_user_id', db.Integer, db.ForeignKey('cms_user_id'), primary_key=True)
+    db.Column('cms_role_id', db.Integer, db.ForeignKey('cms_role.id'), primary_key=True),
+    db.Column('cms_user_id', db.Integer, db.ForeignKey('cms_user.id'), primary_key=True)
 )
 
 
@@ -41,7 +43,7 @@ class CMSRole(db.Model):
 
 
 class CMSUser(db.Model):
-    __tablename__ = "cms_user"
+    __tablename__ = 'cms_user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(50), nullable=False)
     _password = db.Column(db.String(100), nullable=False)
@@ -65,6 +67,27 @@ class CMSUser(db.Model):
         result = check_password_hash(self.password, raw_password)
         return result
 
+    # 获取用户所有权限
+    @property
+    def permissions(self):
+        if not self.roles:
+            return 0
+        all_permissions = 0
+        for role in self.roles:
+            permissions = role.permissions
+            all_permissions |= permissions
+        return all_permissions
+
+    # 判断用户有没有某个权限A，只需将用户权限与A权限的二进制码进行与运算如果结果等于A即有权限A
+    def has_permission(self, permission):
+        # all_permissions = self.permissions
+        # result = all_permissions&permission == permission
+        # return result
+        return self.permissions & permission == permission
+
+    @property
+    def is_developer(self):
+        return self.has_permission(CMSPermission.ALL_PERMISSION)
 
 # 密码，对外的字段名为 password
 # 密码，对内的字段名为 _password
@@ -72,4 +95,3 @@ class CMSUser(db.Model):
 # user = CMSUser()
 # print(user.password)
 # user.password = 'abcdefg'
-
