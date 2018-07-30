@@ -1,7 +1,7 @@
 from flask import session, g
 from .views import bp
 import config
-from .models import CMSUser
+from .models import CMSUser, CMSPermission
 
 
 @bp.before_request
@@ -12,3 +12,8 @@ def before_request():
         # 绑定登陆用户到g上下文
         if user:
             g.cms_user = user
+
+
+@bp.context_processor
+def cms_context_processor():
+    return {"CMSPermission": CMSPermission}
