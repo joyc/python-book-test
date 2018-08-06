@@ -67,9 +67,9 @@ def add_user_to_role(email, name):
             db.session.commit()
             print('用户添加到角色成功。')
         else:
-            print("没有这个角色：%s" % role)
+            print(f"没有这个角色：{role}")
     else:
-        print("邮箱%s没有这个用户。" %email)
+        print(f"邮箱{email}没有这个用户。")
 
 
 @manager.option('-t', '--telephone', dest='telephone')
