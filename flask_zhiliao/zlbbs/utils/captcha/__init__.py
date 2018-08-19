@@ -42,7 +42,7 @@ class Captcha():
 
     # 生成随机颜色
     @classmethod
-    def __gene_random_color(cls,start=0,end=255):
+    def __gene_random_color(cls,start=0, end=255):
         random.seed()
         return (random.randint(start, end), random.randint(start, end), random.randint(start, end))
 
@@ -77,9 +77,9 @@ class Captcha():
         # G：G（绿色）0-255
         # B：B（蓝色）0-255
         # A：Alpha（透明度）
-        image = Image.new('RGBA',(width,height),cls.__gene_random_color(0,100))
+        image = Image.new('RGBA', (width, height), cls.__gene_random_color(0, 100))
         # 验证码的字体
-        font = ImageFont.truetype(cls.__gene_random_font(),cls.fontsize)
+        font = ImageFont.truetype(cls.__gene_random_font(), cls.fontsize)
         # 创建画笔
         draw = ImageDraw.Draw(image)
         # 生成字符串
@@ -93,4 +93,6 @@ class Captcha():
             cls.__gene_line(draw, width, height)
         # 绘制噪点
         cls.__gene_points(draw, 10, width, height)
-        return (text,image)
+        # with open('captcha.png', 'wb') as fp: # 本地测试
+        #     image.save(fp)
+        return (text, image)
