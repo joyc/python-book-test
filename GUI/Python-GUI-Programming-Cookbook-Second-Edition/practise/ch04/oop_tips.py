@@ -1,10 +1,8 @@
-'''
-Mar 2019
-@author: Hython.com
-'''
-#======================
-# imports
-#======================
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @Time    : 2019/3/11/0011 15:26
+# @Author  : Hython.com
+# @File    : oop_tips.py
 import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
@@ -12,57 +10,17 @@ from tkinter import messagebox as msg
 from tkinter import Menu
 from tkinter import Spinbox
 from time import sleep
-
+import ch04.ToolTip as tt
 
 GLOBAL_CONST = 42
 
-#==============================================
-class ToolTip():
-    def __init__(self, widget):
-        self.widget = widget
-        self.tip_window = None
 
-    def show_tip(self, tip_text):
-        "显示文本提示信息"
-        if self.tip_window or not tip_text:
-            return
-        x, y, _cx, cy = self.widget.bbox("insert")          # get size of widget
-        x = x + self.widget.winfo_rootx() + 25              # calculate to display tooltip
-        y = y + cy + self.widget.winfo_rooty() + 25         # below and to the right
-        self.tip_window = tw = tk.Toplevel(self.widget)     # create new tooltip window
-        tw.wm_overrideredirect(True)                        # remove all Window Manager (wm) decorations
-#         tw.wm_overrideredirect(False)                     # uncomment to see the effect
-        tw.wm_geometry("+%d+%d" % (x, y))                   # create window size
-
-        label = tk.Label(tw, text=tip_text, justify=tk.LEFT,
-                         background="#ffffe0", relief=tk.SOLID, borderwidth=1,
-                         font=("tahoma", "8", "normal"))
-        label.pack(ipadx=1)
-
-    def hide_tip(self):
-        tw = self.tip_window
-        self.tip_window = None
-        if tw:
-            tw.destroy()
-
-
-#===================================================================
-def create_ToolTip(widget, text):
-    toolTip = ToolTip(widget)       # create instance of class
-    def enter(event):
-        toolTip.show_tip(text)
-    def leave(event):
-        toolTip.hide_tip()
-    widget.bind('<Enter>', enter)   # bind mouse events
-    widget.bind('<Leave>', leave)
-
-#==========================================
 class OOP():
     def __init__(self):         # Initializer method
         # Create instance
         self.win = tk.Tk()
 
-        create_ToolTip(self.win, 'Hello GUI')
+        tt.create_ToolTip(self.win, 'Hello GUI')
 
         # Add a title
         self.win.title("Python GUI 程序设计")
@@ -172,7 +130,7 @@ class OOP():
         self.spin.grid(column=0, row=2)
 
         # 添加提示信息
-        create_ToolTip(self.spin, '此处是spin box')
+        tt.create_ToolTip(self.spin, '此处是spin box')
 
         # 添加文本框滚动条
         scrol_w = 30
@@ -181,7 +139,7 @@ class OOP():
         self.scrol.grid(column=0, row=3, sticky='WE', columnspan=3)
 
         # 添加提示信息
-        create_ToolTip(self.scrol, '此处是滚动条文本框')
+        tt.create_ToolTip(self.scrol, '此处是滚动条文本框')
 
         # 增设标签2tab来布局剩下的控件  ----------------------------------------
         self.mighty2 = ttk.LabelFrame(tab2, text=' 新的标签 ')
